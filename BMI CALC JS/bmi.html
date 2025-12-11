@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f7f6; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .main_container {
+        height: auto; 
+        width: 350px;
+        padding: 30px;
+        background-color: #ffffff; 
+        border-radius: 15px; 
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem; 
+      }
+
+      .heading {
+        color: #1e88e5; 
+        font-weight: 600;
+        margin-top: 0;
+        margin-bottom: 10px;
+        border-bottom: 3px solid #1e88e5; 
+        padding-bottom: 5px;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+        box-sizing: border-box; 
+      }
+
+      input[type="text"]:focus {
+        border-color: #1e88e5; 
+        outline: none;
+        box-shadow: 0 0 5px rgba(30, 136, 229, 0.5);
+      }
+      
+      #weight_ipt::placeholder {
+          color: red; 
+          font-style: italic;
+      }
+      
+      #calc-bmi {
+        width: 100%;
+        padding: 12px;
+        background-color: #43a047; 
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.1s;
+      }
+
+      #calc-bmi:hover {
+        background-color: #388e3c; 
+      }
+
+      #calc-bmi:active {
+        transform: scale(0.98); 
+      }
+
+      .result {
+        margin-top: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #ff6f00; 
+        text-align: center;
+        padding: 10px;
+        border-top: 1px dashed #e0e0e0;
+        width: 100%;
+      }
+      
+    </style>
+    </style>
+  </head>
+  <body>
+    <div class="main_container">
+      <h2 class="heading">BMI Calculator</h2>
+
+      <input
+        type="text"
+        placeholder="Enter Your Height In CM"
+        id="height_ipt"
+      />
+      <input
+        type="text"
+        placeholder="Enter Your weight In CM"
+        id="weight_ipt"
+      />
+
+      <input type="submit" value="Calculate BMI" id="calc-bmi" />
+      <div class="result"></div>
+    </div>
+    <script>
+      document.querySelector("#calc-bmi").addEventListener("click", getbmi);
+
+      function getbmi() {
+        let height_btn = parseInt(document.getElementById("height_ipt").value);
+        let weight_ipt = parseFloat(
+          document.getElementById("weight_ipt").value
+        );
+        let newvalue = parseFloat(height_btn / 100);
+        bmi_value = weight_ipt / (newvalue * newvalue);
+        document.querySelector(
+          ".result"
+        ).innerHTML = `Your BMI IS ${bmi_value}😊`;
+      }
+    </script>
+  </body>
+</html>
