@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BG SWICTH</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+        margin: 0;
+        padding-top: 50px;
+        background-color: #f0f0f0;
+        transition: background-color 0.4s ease;
+      }
+
+      .container {
+        text-align: center;
+        padding: 30px 40px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 90%;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      p {
+        color: #666;
+        margin-bottom: 25px;
+      }
+
+      #color-switch {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+      }
+
+      #color-switch li {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid #ddd;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      #color-switch li:hover {
+        transform: scale(1.1);
+        border-color: #555;
+      }
+
+      #orange {
+        background-color: orange;
+      }
+
+      #green {
+        background-color: green;
+      }
+
+      #blue {
+        background-color: blue;
+      }
+
+      #pink {
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>BG COLOR SWICTH</h1>
+      <p>please select a color for background</p>
+      <ul id="color-switch">
+        <li id="orange"></li>
+        <li id="green"></li>
+        <li id="blue"></li>
+        <li id="pink"></li>
+      </ul>
+    </div>
+    <script>
+      document.getElementById("orange").onclick = switchToOrange;
+      document.getElementById("green").onclick = switchToGreen;
+      document.getElementById("blue").onclick = switchToBlue;
+      document.getElementById("pink").onclick = switchToPink;
+
+      function switchToOrange() {
+        document.getElementsByTagName("body")[0].style.backgroundColor =
+          "orange";
+      }
+      function switchToGreen() {
+        document.getElementsByTagName("body")[0].style.backgroundColor =
+          "green";
+      }
+      function switchToBlue() {
+        document.getElementsByTagName("body")[0].style.backgroundColor = "blue";
+      }
+      function switchToPink() {
+        document.getElementsByTagName("body")[0].style.backgroundColor = "pink";
+      }
+    </script>
+  </body>
+</html>
