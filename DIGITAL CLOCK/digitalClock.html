@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIGITAL CLOCK</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Share Tech Mono", monospace; /* Futuristic font */
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #050505; /* Pitch black */
+        overflow: hidden;
+      }
+
+      .container {
+        text-align: center;
+        background: rgba(20, 20, 20, 0.8);
+        padding: 50px 80px;
+        border-radius: 20px;
+        border: 1px solid #333;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 1);
+        position: relative;
+      }
+
+      /* Glowing Border Effect */
+      .container::after {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, #ff0055, #00fbff, #ff0055);
+        z-index: -1;
+        border-radius: 22px;
+        filter: blur(10px);
+        opacity: 0.3;
+      }
+
+      .date {
+        color: #888;
+        font-size: 1.5rem;
+        letter-spacing: 5px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+
+      .clock-container h2 {
+        color: #00fbff; /* Cyan neon */
+        font-size: 5rem;
+        text-shadow: 0 0 10px #00fbff, 0 0 40px #00fbff;
+        font-weight: 400;
+      }
+
+      /* Subtle animation for the glow */
+      @keyframes pulse {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.8;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .clock-container {
+        animation: pulse 2s infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 id="date" class="date">26/05/2026</h2>
+
+      <div class="clock-container">
+        <h2 class="time" id="time">12:00:00 AM</h2>
+      </div>
+    </div>
+
+    <script>
+      setInterval(function () {
+        let currentdatetime = new Date();
+
+        let currectDate = currentdatetime.getDate();
+        let currentMonth = currentdatetime.getMonth();
+        let currectYear = currentdatetime.getFullYear();
+
+        document.getElementById("date").innerHTML =
+          currectDate + "/" + currentMonth + "/" + currectYear;
+
+        let hours = currentdatetime.getHours();
+        let minutes = currentdatetime.getMinutes();
+        let seconds = currentdatetime.getSeconds();
+        let period = "AM";
+        if (hours >= 12) {
+          period = "PM";
+        }
+        if (hours > 12) {
+          hours -= 12;
+        }
+        if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+        if (seconds < 10) {
+          seconds = "0" + seconds;
+        }
+
+        document.getElementById("time").innerHTML =
+          hours + ":" + minutes + ":" + seconds + " " + period;
+      });
+    </script>
+  </body>
+</html>
